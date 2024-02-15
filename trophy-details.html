@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trophy Details</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Add custom styles for the trophy-details page */
+    .trophy-image {
+      max-width: 15%; /* Ensure the image doesn't exceed its natural size */
+      height: auto;    /* Maintain the aspect ratio */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <img src="logo.png" alt="Trophy Room Logo">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="content">
+      <section class="trophy-details">
+        <h2 id="trophy-title"></h2>
+        <img id="trophy-image" class="trophy-image" alt="Trophy Image">
+        <p id="trophy-description" class="trophy-description"></p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; The Trophy Room 2024</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Retrieve trophy details from the URL query parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const trophyTitle = urlParams.get('trophy');
+
+      // Get trophy details container elements
+      const trophyTitleElement = document.getElementById('trophy-title');
+      const trophyImageElement = document.getElementById('trophy-image');
+      const trophyDescriptionElement = document.getElementById('trophy-description');
+
+      // Set trophy details based on the clicked trophy
+      trophyTitleElement.textContent = trophyTitle;
+      trophyImageElement.src = `images/${trophyTitle.toLowerCase()}.jpg`; // Update the path accordingly
+      trophyImageElement.alt = trophyTitle;
+      trophyDescriptionElement.textContent = `Description for ${trophyTitle}`;
+    });
+  </script>
+</body>
+</html>
